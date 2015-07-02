@@ -9,11 +9,16 @@ class Publisher(models.Model):
     state_province = models.CharField(max_length=30)
     country = models.CharField(max_length=50);
     website = models.URLField();
+    num_pages = models.IntegerField(blank = True, null = True)
+    
 
 
     def __str__(self):
         return self.name;
 
+    class Admin:
+        pass;
+    
 class Author(models.Model):
     salutation = models.CharField(max_length = 10)
     first_name = models.CharField(max_length = 30)
@@ -24,6 +29,9 @@ class Author(models.Model):
     def __str__(self):
         return "{firstName} {lastName}".format(firstName = first_name, lastName = last_name);
 
+    class Admin:
+         pass;
+        
 class Book(models.Model):
     title = models.CharField(max_length = 100)
     authors = models.ManyToManyField(Author)
@@ -32,3 +40,6 @@ class Book(models.Model):
 
     def __str__(self):
         return self.title;
+
+    class Admin:
+        pass;
