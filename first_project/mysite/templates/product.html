@@ -1,0 +1,60 @@
+<!doctype html>
+<!--This html file relies on information sent by the client. Do not use independently-->
+<html>
+<head>
+ <meta charset="utf-8">
+ <title>Products Table ( {{ limit}} )</title>
+ <style>
+
+  section#main {
+    width: 80%;
+    margin-left: 5%;
+  }
+
+  table {
+    font-family: sans-serif;
+    border-collapse: collapse;
+  }
+  
+  caption {
+     caption-side: bottom;
+	 font-size: 80%;
+  }
+   
+ td {
+    border: 1px solid #98BF21; 
+    padding: 3px 15px 2px 7px;
+	white-space: nowrap;
+}
+
+table tr:nth-child(odd) {
+    background-color: #EAF2D3;
+}
+ </style>
+</head>
+
+<body>
+<section id="main">
+
+ <h1>A {{ limit }} by {{ limit }} Multiplication Table</h1>
+ 
+ <table>
+  <caption>{{ limit }} by {{ limit }} mulitplication table</caption>
+  
+  {% for val in table %}
+     {% if val.lower == "linebegin" %}
+	   <tr class="productsTable">
+	 {% endif %}
+	 
+	 {% if val.lower != "linebegin" and val.lower != "lineend" %}
+	   <td>{{ val }}</td>
+	 {% endif %}
+	 {% if val.lower == "lineend"  %}
+     	 </tr>
+	 {% endif %}
+  {% endfor %}
+ </table>
+</section>
+</body>
+
+</html>
